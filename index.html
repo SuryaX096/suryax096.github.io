@@ -1,250 +1,195 @@
- <!-- Advanced Portfolio with Glassmorphism, Animations, Hero Photo, Modern Typography, Smooth Scroll, Dark/Light Mode -->
-<!DOCTYPE html>
+  <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Surya Pratap Singh — Portfolio</title>
-
-  <!-- Modern Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Surya Pratap Singh — Portfolio (Netflix-style)</title>
+  <meta name="description" content="Netflix-style portfolio of Surya Pratap Singh — projects shown as poster rows" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg-dark: #0a0f24;
-      --bg-light: #ffffff;
-      --glass-dark: rgba(255, 255, 255, 0.06);
-      --glass-light: rgba(0, 0, 0, 0.05);
-      --accent: #00d4ff;
-      --text-dark: #eaf6ff;
-      --text-light: #1b1b1b;
+    :root{
+      --bg:#030409; --panel:rgba(255,255,255,0.03); --accent:#e50914; --muted:#bfcbd6;
+      --glass:rgba(255,255,255,0.03); --card-radius:10px;
     }
-
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: var(--bg-dark);
-      color: var(--text-dark);
-      transition: 0.4s ease-in-out;
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:#fff;background:linear-gradient(180deg,#000 0%, #07101a 60%);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    /* NAV */
+    .nav{
+      position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:linear-gradient(180deg,rgba(0,0,0,0.65),transparent);backdrop-filter:blur(6px)
     }
-
-    /* Smooth Scrolling */
-    html {
-      scroll-behavior: smooth;
+    .logo{font-weight:700;letter-spacing:1px}
+    .nav-right{display:flex;align-items:center;gap:14px}
+    .avatar{width:42px;height:42px;border-radius:6px;overflow:hidden;border:2px solid rgba(255,255,255,0.06)}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .nav a.btn{background:rgba(255,255,255,0.06);padding:8px 12px;border-radius:6px;font-weight:600}
+    /* HERO */
+    .hero{
+      height:66vh;min-height:420px;display:flex;align-items:flex-end;padding:48px 48px 68px;background-image:linear-gradient(180deg,rgba(0,0,0,0.0),rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1505685296765-3a2736de412f?auto=format&fit=crop&w=1600&q=60');
+      background-size:cover;background-position:center;
     }
-
-    /* Hero Section */
-    .hero {
-      max-width: 1200px;
-      margin: auto;
-      padding: 60px 20px;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .hero-photo {
-      width: 320px;
-      height: 320px;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 4px solid rgba(255,255,255,0.08);
-      box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.6);
-      animation: fadeIn 1.2s ease forwards;
-    }
-
-    .hero-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-text h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-      animation: slideIn 1s ease forwards;
-    }
-
-    .hero-text span {
-      color: var(--accent);
-    }
-
-    .hero-text p {
-      font-size: 18px;
-      opacity: 0.85;
-      margin-bottom: 20px;
-      animation: fadeIn 1.5s ease forwards;
-    }
-
-    /* Glassmorphism Cards */
-    .card {
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 22px 26px;
-      border-radius: 20px;
-      background: var(--glass-dark);
-      backdrop-filter: blur(18px);
-      box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.45);
-      transition: 0.4s;
-    }
-
-    /* Section Titles */
-    .title {
-      font-size: 20px;
-      margin-bottom: 10px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    /* Skills */
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .skill {
-      padding: 8px 14px;
-      background: rgba(255,255,255,0.10);
-      border-radius: 50px;
-      font-size: 14px;
-    }
-
-    /* Projects Grid */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      padding-top: 10px;
-    }
-
-    .project-card {
-      padding: 20px;
-      border-radius: 18px;
-      background: var(--glass-dark);
-      backdrop-filter: blur(14px);
-      transition: 0.4s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.5);
-    }
-
-    .project-card h3 {
-      margin-top: 0;
-      color: var(--accent);
-    }
-
-    /* Contact */
-    form input, form textarea {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 12px;
-      border-radius: 12px;
-      border: none;
-      outline: none;
-      background: rgba(255,255,255,0.12);
-      color: white;
-    }
-
-    form button {
-      padding: 14px 22px;
-      background: var(--accent);
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    form button:hover {
-      transform: scale(1.04);
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-30px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-  
-    /* Dark/Light Mode */
-    #toggleMode {
-      position: fixed;
-      right: 20px;
-      top: 20px;
-      padding: 10px 16px;
-      border-radius: 50px;
-      background: rgba(255,255,255,0.1);
-      cursor: pointer;
-      font-size: 18px;
-      backdrop-filter: blur(14px);
-    }
-
+    .hero-left{max-width:780px}
+    .kicker{color:var(--accent);font-weight:700;margin-bottom:10px}
+    .hero-title{font-size:48px;margin:0 0 12px;line-height:1}
+    .hero-sub{color:var(--muted);max-width:680px;margin-bottom:18px}
+    .hero-cta{display:flex;gap:12px}
+    .cta-primary{background:var(--accent);color:#050505;padding:12px 18px;border-radius:6px;font-weight:700}
+    .cta-secondary{background:rgba(255,255,255,0.06);padding:12px 18px;border-radius:6px}
+    /* rows */
+    .container{max-width:1200px;margin:28px auto;padding:0 18px}
+    .row{margin:20px 0}
+    .row .row-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .row-title{font-weight:600}
+    .row-scroller{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;scroll-behavior:smooth}
+    .poster{min-width:200px;max-width:200px;height:120px;border-radius:8px;background:#111;position:relative;overflow:hidden;flex:0 0 auto;transition:transform .25s}
+    .poster img{width:100%;height:100%;object-fit:cover;display:block}
+    .poster:hover{transform:translateY(-8px)}
+    .poster .meta{position:absolute;left:0;right:0;bottom:0;padding:10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.7));color:#fff;font-size:14px}
+    .poster .meta small{display:block;color:#d0d7de;font-size:12px;margin-top:6px}
+    /* arrows for desktop */
+    .controls{display:flex;gap:8px}
+    .icon-btn{background:rgba(255,255,255,0.06);width:36px;height:36px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+    /* responsive */
+    @media (max-width:900px){.hero-title{font-size:28px}.hero{padding:28px 18px 48px}.poster{min-width:140px;height:90px}}
+    /* small scrollbar hide */
+    .row-scroller::-webkit-scrollbar{height:8px}
+    .row-scroller::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.06);border-radius:8px}
   </style>
 </head>
 <body>
 
-<!-- DARK/LIGHT MODE BUTTON -->
-<div id="toggleMode">🌙</div>
-
-<!-- HERO SECTION -->
-<section class="hero">
-  <div class="hero-photo">
-    <img src="https://github.com/SuryaX096.png" alt="Surya Pratap Singh">
-
-  </div>
-
-  <div class="hero-text">
-    <h1>Surya Pratap Singh <span>— Web Developer</span></h1>
-    <p>I design responsive interfaces, build functional web apps, and create modern user experiences with clean UI/UX.</p>
-    <a href="#projects" style="padding:12px 20px;background:var(--accent);color:#000;border-radius:12px;font-weight:600;text-decoration:none;">View My Projects ↓</a>
-  </div>
-</section>
-
-<!-- ABOUT SECTION -->
-<div class="card" id="about">
-  <div class="title">About Me</div>
-  <p>Hello! I’m <strong>Surya Pratap Singh</strong>, a CSE student and passionate web developer. I focus on building clean, modern, and functional websites using HTML, CSS, JavaScript, and React. I love learning new technologies and improving my design sense.</p>
-
-  <div class="title" style="margin-top:20px;">Skills</div>
-  <div class="skills">
-    <div class="skill">HTML</div>
-    <div class="skill">CSS</div>
-    <div class="skill">JavaScript</div>
-    <div class="skill">React</div>
-    <div class="skill">Node.js</div>
-    <div class="skill">Git</div>
-    <div class="skill">Python</div>
-  </div>
-</div>
-
-<!-- PROJECTS SECTION -->
-<div class="card" id="projects">
-  <div class="title">Projects</div>
-
-  <div class="projects-grid">
-
-    <div class="project-card">
-      <h3>Personal Portfolio</h3>
-      <p>A modern, animated, glassmorphic portfolio website showcasing my work and skills.</p>
-      <a href="https://github.com/suryax096/suryax096.github.io" target="_blank">View on GitHub →</a>
+  <!-- NAV -->
+  <div class="nav">
+    <div style="display:flex;align-items:center;gap:18px">
+      <div class="logo">SuryaX</div>
+      <div style="color:var(--muted);font-size:14px">Portfolio — Netflix style</div>
     </div>
 
-    <div class="project-card">
-      <h3>Mini Task Manager</h3>
-      <p>A simple & clean to-do app with localStorage saving and custom UI.</p>
-      <a href="#">View Demo →</a>
+    <div class="nav-right">
+      <a class="btn" href="#projects">Projects</a>
+      <!-- Avatar uses your uploaded file path + fallback to GitHub avatar -->
+      <div class="avatar" title="Surya Pratap Singh">
+        <img src="/mnt/data/display pic.jpg" alt="avatar" onerror="this.onerror=null;this.src='https://github.com/SuryaX096.png'">
+      </div>
     </div>
+  </div>
 
-    <div class="project-card">
-      <h
+  <!-- HERO -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-left">
+      <div class="kicker">Hello — I'm Surya</div>
+      <h1 class="hero-title">I build beautiful web interfaces and apps.</h1>
+      <p class="hero-sub">Netflix-like project showcase: poster rows, hover previews and quick links. Frontend focused — HTML, CSS, JS, React.</p>
+      <div class="hero-cta">
+        <a class="cta-primary" href="#projects">See Projects</a>
+        <a class="cta-secondary" href="#contact">Contact me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROWS -->
+  <div class="container">
+
+    <section class="row" id="featured">
+      <div class="row-head">
+        <div class="row-title">Featured Projects</div>
+        <div class="controls">
+          <button class="icon-btn" onclick="scrollRow('featured-row', -420)">◀</button>
+          <button class="icon-btn" onclick="scrollRow('featured-row', 420)">▶</button>
+        </div>
+      </div>
+      <div id="featured-row" class="row-scroller" role="list">
+        <!-- Poster 1 -->
+        <article class="poster" role="listitem">
+          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=800&q=60" alt="Project poster">
+          <div class="meta">
+            <strong>Personal Portfolio</strong>
+            <small>HTML • CSS • JS — Live demo & repo</small>
+          </div>
+        </article>
+
+        <!-- Poster 2 -->
+        <article class="poster" role="listitem" onclick="openProject('https://github.com/suryax096/suryax096.github.io')">
+          <img src="https://images.unsplash.com/photo-1523475496153-3d6cc3b5c6d9?auto=format&fit=crop&w=800&q=60" alt="Project poster 2">
+          <div class="meta">
+            <strong>Mini Task Manager</strong>
+            <small>Vanilla JS • localStorage</small>
+          </div>
+        </article>
+
+        <!-- Poster 3 -->
+        <article class="poster" role="listitem">
+          <img src="https://images.unsplash.com/photo-1526378729231-1b2f7b5f6f4a?auto=format&fit=crop&w=800&q=60" alt="Project poster 3">
+          <div class="meta">
+            <strong>Exam Notes Uploader</strong>
+            <small>Node • Express (prototype)</small>
+          </div>
+        </article>
+
+        <!-- more posters (copy/paste to add) -->
+      </div>
+    </section>
+
+    <section class="row" id="web">
+      <div class="row-head">
+        <div class="row-title">Web Apps</div>
+        <div class="controls">
+          <button class="icon-btn" onclick="scrollRow('web-row', -420)">◀</button>
+          <button class="icon-btn" onclick="scrollRow('web-row', 420)">▶</button>
+        </div>
+      </div>
+      <div id="web-row" class="row-scroller" role="list">
+        <article class="poster">
+          <img src="https://images.unsplash.com/photo-1529338296731-0a2f1f1b4a1a?auto=format&fit=crop&w=800&q=60" alt="">
+          <div class="meta"><strong>Calculator UI</strong><small>React • Responsive</small></div>
+        </article>
+        <article class="poster">
+          <img src="https://images.unsplash.com/photo-1526406915894-ec0a5a86b6f9?auto=format&fit=crop&w=800&q=60" alt="">
+          <div class="meta"><strong>Weather App</strong><small>API • JS</small></div>
+        </article>
+        <article class="poster">
+          <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=60" alt="">
+          <div class="meta"><strong>Notes App</strong><small>LocalStorage • UI</small></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section class="row" id="contact" style="margin-top:28px">
+      <div class="row-head"><div class="row-title">Contact</div></div>
+      <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+        <div style="flex:1;min-width:280px">
+          <p style="color:var(--muted)">Want to work together? Email me or open a GitHub issue on any project.</p>
+          <p style="color:var(--muted)"><strong>Email:</strong> your@email.com</p>
+        </div>
+        <div>
+          <a class="btn" href="https://github.com/suryax096" target="_blank">View GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <footer style="color:var(--muted);margin:40px 0 80px;text-align:center">© Surya Pratap Singh</footer>
+  </div>
+
+<script>
+  // scroll helper
+  function scrollRow(id, px){
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.scrollBy({left:px, behavior:'smooth'});
+  }
+
+  // open project helper
+  function openProject(url){
+    if(!url) return;
+    window.open(url, '_blank');
+  }
+
+  // small keyboard arrows for focused row (nice touch)
+  document.addEventListener('keydown', e=>{
+    if(e.key === 'ArrowRight') scrollRow('featured-row', 300);
+    if(e.key === 'ArrowLeft') scrollRow('featured-row', -300);
+  });
+</script>
+</body>
+</html>
