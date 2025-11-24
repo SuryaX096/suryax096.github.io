@@ -1,0 +1,32 @@
+<!doctype html>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="message" rows="4" placeholder="Message" required></textarea>
+<button type="submit">Send email</button>
+</form>
+</div>
+
+
+<div style="margin-top:16px;color:var(--muted);font-size:13px">Resume: <a href="#" style="color:var(--accent);text-decoration:none">Download</a></div>
+</div>
+
+
+<div class="card" style="margin-top:14px;text-align:center">
+<div class="section-title">Quick Info</div>
+<p style="margin:6px 0;color:var(--muted)">Location: India</p>
+<p style="margin:6px 0;color:var(--muted)">Open to internships & freelance</p>
+</div>
+</aside>
+</div>
+
+
+<footer>
+<div>Made with ❤️ by Surya — <span style="color:var(--muted)">© <span id="year"></span></span></div>
+</footer>
+</div>
+
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
