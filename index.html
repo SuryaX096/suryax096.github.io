@@ -1,82 +1,150 @@
-<!--
-File: index.html
-A single-file responsive portfolio website. Replace placeholders (YOUR_NAME, YOUR_TITLE, BIO, PROJECTS, SOCIAL LINKS) with your own content.
-
-
-Below the HTML is a README section explaining how to publish to GitHub Pages with exact git commands.
--->
-
+ 
 
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>YOUR_NAME — Portfolio</title>
-<meta name="description" content="Portfolio of YOUR_NAME — YOUR_TITLE">
-<style>
-:root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--muted:#9aa4b2;--glass:rgba(255,255,255,0.04)}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,#071028 0%,#081426 100%);color:#e6eef6}
-.container{max-width:1000px;margin:36px auto;padding:24px}
-header{display:flex;gap:20px;align-items:center}
-.avatar{width:96px;height:96px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#6366f1);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:36px;color:#021021;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
-h1{margin:0;font-size:26px}
-p.lead{color:var(--muted);margin:6px 0 0}
-nav{margin-left:auto}
-nav a{color:var(--muted);text-decoration:none;margin-left:16px}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>YOUR_NAME — Portfolio</title>
+  <meta name="description" content="Portfolio of YOUR_NAME — YOUR_TITLE">
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--muted:#9aa4b2;--glass:rgba(255,255,255,0.04)}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,#071028 0%,#081426 100%);color:#e6eef6}
+    .container{max-width:1000px;margin:36px auto;padding:24px}
+    header{display:flex;gap:20px;align-items:center}
+    .avatar{width:96px;height:96px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#6366f1);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:36px;color:#021021;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    h1{margin:0;font-size:26px}
+    p.lead{color:var(--muted);margin:6px 0 0}
+    nav{margin-left:auto}
+    nav a{color:var(--muted);text-decoration:none;margin-left:16px}
 
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:20px;margin-top:28px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    .section-title{font-size:14px;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
 
-.grid{display:grid;grid-template-columns:1fr 320px;gap:20px;margin-top:28px}
-.card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
-.section-title{font-size:14px;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+    .about p{line-height:1.6;color:#d7e6f2}
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .skill{background:var(--glass);padding:8px 10px;border-radius:999px;color:var(--muted);font-size:13px}
 
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .proj{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px;border-radius:10px}
+    .proj h3{margin:0 0 6px;font-size:16px}
+    .proj p{margin:0;color:var(--muted);font-size:13px}
+    .proj a{display:inline-block;margin-top:10px;font-size:13px}
 
-.about p{line-height:1.6;color:#d7e6f2}
-.skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.skill{background:var(--glass);padding:8px 10px;border-radius:999px;color:var(--muted);font-size:13px}
+    .contact form{display:flex;flex-direction:column;gap:8px}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:#e8f6ff}
+    button{background:var(--accent);border:0;padding:10px 12px;border-radius:8px;color:#021021;font-weight:600;cursor:pointer}
 
+    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
 
-.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.proj{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px;border-radius:10px}
-.proj h3{margin:0 0 6px;font-size:16px}
-.proj p{margin:0;color:var(--muted);font-size:13px}
-.proj a{display:inline-block;margin-top:10px;font-size:13px}
-
-
-.contact form{display:flex;flex-direction:column;gap:8px}
-input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:#e8f6ff}
-button{background:var(--accent);border:0;padding:10px 12px;border-radius:8px;color:#021021;font-weight:600;cursor:pointer}
-
-
-footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
-
-
-@media (max-width:900px){.grid{grid-template-columns:1fr}.avatar{width:80px;height:80px;font-size:28px}.container{padding:16px}}
-</style>
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.avatar{width:80px;height:80px;font-size:28px}.container{padding:16px}}
+  </style>
 </head>
 <body>
-<div class="container">
-<header>
-<div style="display:flex;gap:16px;align-items:center">
-<div class="avatar">SY</div>
-<div>
-<h1>Surya Pratap <span style="color:var(--accent);font-weight:600">— Web Developer</span></h1>
-<p class="lead">I build responsive websites and small web apps. Currently learning full-stack development and making clean UI/UX for real users.</p>
-</div>
-</div>
-<nav>
-<a href="#about">About</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</nav>
-</header>
+  <div class="container">
+    <header>
+      <div style="display:flex;gap:16px;align-items:center">
+        <div class="avatar" style="padding:6px;background:linear-gradient(135deg,var(--accent),#6366f1);border-radius:14px"><img src="/mnt/data/display pic.jpg" alt="Surya Pratap Singh" style="width:96px;height:96px;border-radius:12px;object-fit:cover"></div>
+        <div>
+          <h1>Surya Pratap Singh <span style="color:var(--accent);font-weight:600">— Web Developer<\/span><\/h1>
+          <p class="lead">I build responsive websites and web apps. I’m a CSE student focused on frontend development, clean UI/UX and practical projects that solve real problems.</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
+    <div class="grid">
+      <main>
+        <section id="about" class="card about">
+          <div class="section-title">About</div>
+          <p>Hi — I'm Surya Pratap Singh. I'm a Computer Science student and aspiring web developer. I enjoy building clean, accessible user interfaces and learning full‑stack workflows. Currently open to internships and small freelance projects.</p>
 
-<div class="grid">
-<main>
-<section id="about" class="card about">
-<div class="section-title">About</div>
-<p>Hi — I'm Surya. I study Computer Science and build web projects that solve small problems. I enjoy making UIs clean and writing readable code. Replace this paragraph with your short bio, achievements, and what you are looking for.</p>
+          <div class="section-title">Skills</div>
+          <div class="skills">
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">React</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">Git</div>
+            <div class="skill">C</div>
+            <div class="skill">Python</div>
+          </div>
+            <div class="skill">CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">React</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">Git</div>
+          </div>
+        </section>
 
+        <section id="projects" class="card" style="margin-top:18px">
+          <div class="section-title">Projects</div>
+          <div class="projects">
+            <article class="proj">
+              <h3>Personal Portfolio</h3>
+              <p>A responsive portfolio site built with HTML, CSS and a little JavaScript. Shows projects and contact information.</p>
+              <a href="https://github.com/suryax096/suryax096.github.io" target="_blank">View on GitHub →</a>
+            </article>
 
+            <article class="proj">
+              <h3>Mini Task Manager</h3>
+              <p>A small web app to create and manage daily tasks. Built with vanilla JS and localStorage for persistence.</p>
+              <a href="#">View demo →</a>
+            </article>
+
+            <!-- Add more projects -->
+          </div>
+        </section>
+
+      </main>
+
+      <aside>
+        <div class="card">
+          <div class="section-title">Contact</div>
+          <p style="color:var(--muted)">Interested in working together? Send an email or connect on GitHub/LinkedIn.</p>
+          <div style="margin-top:10px;display:flex;gap:8px">
+            <a href="https://github.com/suryax096" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none">GitHub</a>
+            <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none">LinkedIn</a>
+          </div>
+
+          <div style="margin-top:14px" class="section-title">Contact Form</div>
+          <div class="contact">
+            <form action="mailto:your@email.com" method="post" enctype="text/plain">
+              <input type="text" name="name" placeholder="Your name" required>
+              <input type="email" name="email" placeholder="Email" required>
+              <textarea name="message" rows="4" placeholder="Message" required></textarea>
+              <button type="submit">Send email</button>
+            </form>
+          </div>
+
+          <div style="margin-top:16px;color:var(--muted);font-size:13px">Resume: <a href="#" style="color:var(--accent);text-decoration:none">Download</a></div>
+        </div>
+
+        <div class="card" style="margin-top:14px;text-align:center">
+          <div class="section-title">Quick Info</div>
+          <p style="margin:6px 0;color:var(--muted)">Location: India</p>
+          <p style="margin:6px 0;color:var(--muted)">Open to internships & freelance</p>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div>Made with ❤️ by Surya — <span style="color:var(--muted)">© <span id="year"></span></span></div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
+
+
+
+ 
